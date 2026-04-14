@@ -13,6 +13,7 @@ def main():
     bg_flipped_img = pg.transform.flip(bg_img , True, False)
     tmr = 0
 
+
     kouka_img = pg.image.load("fig/3.png")
     kouka_img = pg.transform.flip(kouka_img , True, False)
     kouka_rct = kouka_img.get_rect()
@@ -31,15 +32,17 @@ def main():
 
         key_lst = pg.key.get_pressed()
         
+        dx = 0
+        dy = 0
         if key_lst[pg.K_UP]:
-            kouka_rct.move_ip((0,-1))
+            dy = -1
         if key_lst[pg.K_DOWN]:
-            kouka_rct.move_ip((0,1))
+            dy = 1
         if key_lst[pg.K_LEFT]:
-            kouka_rct.move_ip((-1,0))
+            dx = -1
         if key_lst[pg.K_RIGHT]:
-            kouka_rct.move_ip((2,0))
-        kouka_rct.move_ip((-1, 0))
+            dx = 2
+        kouka_rct.move_ip((dx-1,dy))
         
         pg.display.update()
         tmr += 1        
